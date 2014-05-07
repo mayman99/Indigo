@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- Copyright (C)2014-2014 Marcel Trapman. -->
+<PluginConfig>
+	<Field id="toplabel" type="label">
+		<Label>With this plugin you can communicate with sensors and actuators based on MySensors.</Label>
+	</Field>
+	<Field id="address" type="menu">
+		<Label>Gateway Port:</Label>
+		<List class="self" method="loadSerialPorts" dynamicReload="true"/>
+	</Field>
+	<Field id="unit" type="menu" defaultValue="M">
+		<Label>Measurement units:</Label>
+		<List>
+			<Option value="M">Metric</Option>
+			<Option value="I">US</Option>
+		</List>
+	</Field>
+	<Field id="copyrightlabel" type="label" fontSize="small" fontColor="darkgray">
+		<Label>Copyright ©2014-2014 Marcel Trapman.</Label>
+	</Field>
+	<Field id="debugSeparator" type="separator"/>
+	<Field id="debugLabel" type="label" fontSize="small" fontColor="darkgray">
+		<Label>If you are having problems with the plugin (or you are instructed by us), you can enable extra logging in the Event Log window by checking this button. Use with caution.</Label>
+	</Field>
+  	<Field id="showDebugInfo" type="checkbox">
+		<Label>Enable debugging:</Label>
+		<Description>(not recommended)</Description>
+	</Field>
+</PluginConfig>

@@ -1,0 +1,597 @@
+<?xml version="1.0"?>
+<!-- Copyright (C)2014-2014 Marcel Trapman. -->
+<Devices>
+	<DeviceFactory>
+		<Name>Define Device Group...</Name>
+		<ButtonTitle>Close</ButtonTitle>
+		<ConfigUI>
+			<Field type="list" id="devicegrouplist">
+				<Label>Device group:</Label>
+				<List class="self" method="getDeviceGroupList" dynamicReload="true" />
+			</Field>
+			<Field type="separator" id="addseperator" />
+			<Field id="selecteddevice" type="menu">
+				<Label>Select Device:</Label>
+				<List class="self" method="getAvailableDevices" dynamicReload="true"/>
+			</Field>
+			<Field type="button" id="adddevice">
+				<Title>Add Device</Title>
+				<CallbackMethod>addIndigoDevice</CallbackMethod>
+			</Field>
+		</ConfigUI>
+	</DeviceFactory>
+	<Device type="custom" id="DOOR">
+		<Name>Door</Name>
+		<Description>The Door Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="onOffState" defaultValue="False">
+		        <ValueType>Boolean</ValueType>
+		        <TriggerLabel>On/Off State</TriggerLabel>
+		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
+		        <ControlPageLabel>On/Off State</ControlPageLabel>
+		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>onOffState</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="MOTION">
+		<Name>Motion</Name>
+		<Description>The Motion Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="onOffState" defaultValue="False">
+		        <ValueType>Boolean</ValueType>
+		        <TriggerLabel>On/Off State</TriggerLabel>
+		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
+		        <ControlPageLabel>On/Off State</ControlPageLabel>
+		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>onOffState</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="SMOKE">
+		<Name>Smoke</Name>
+		<Description>The Smoke Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="onOffState" defaultValue="False">
+		        <ValueType>Boolean</ValueType>
+		        <TriggerLabel>On/Off State</TriggerLabel>
+		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
+		        <ControlPageLabel>On/Off State</ControlPageLabel>
+		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>onOffState</UiDisplayStateId>
+	</Device>
+	<Device type="relay" id="LIGHT">
+		<Name>Relay</Name>
+		<Description>The Relay Switch.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+	</Device>
+	<Device type="dimmer" id="DIMMER">
+		<Name>Dimmer</Name>
+		<Description>The Dimmer Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+	</Device>
+	<Device type="custom" id="COVER">
+		<Name>Window</Name>
+		<Description>The Window Covering Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="onOffState" defaultValue="False">
+		        <ValueType>Boolean</ValueType>
+		        <TriggerLabel>On/Off State</TriggerLabel>
+		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
+		        <ControlPageLabel>On/Off State</ControlPageLabel>
+		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>onOffState</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="TEMP">
+		<Name>Temperature</Name>
+		<Description>The Temperature Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="temperature" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>temperature</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="HUM">
+		<Name>Humidity</Name>
+		<Description>The Humidity Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="BARO">
+		<Name>Barometer</Name>
+		<Description>The Barometer Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="WIND">
+		<Name>Wind</Name>
+		<Description>The Wind Speed Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="RAIN">
+		<Name>Rain</Name>
+		<Description>The Rain Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="UV">
+		<Name>Ultra Violet</Name>
+		<Description>The UV Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="WEIGHT">
+		<Name>Weight</Name>
+		<Description>The Weight (Scale) Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="POWER">
+		<Name>Power Meter</Name>
+		<Description>The Power Meter.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="HEATER">
+		<Name>Heater</Name>
+		<Description>The Heater Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="DISTANCE">
+		<Name>Distance</Name>
+		<Description>The Distance Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="LIGHT_LEVEL">
+		<Name>Luminance</Name>
+		<Description>The Luminance Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="ARDUINO_NODE">
+		<Name>Node</Name>
+		<Description>The Arduino Node.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="state" defaultValue="active">
+		        <ValueType>String</ValueType>
+		        <TriggerLabel>Activated</TriggerLabel>
+		        <TriggerLabelPrefix>Activated</TriggerLabelPrefix>
+		        <ControlPageLabel>Activated</ControlPageLabel>
+		        <ControlPageLabelPrefix>Activated</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+    	<UiDisplayStateId>state</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="ARDUINO_RELAY">
+		<Name>Relay</Name>
+		<Description>The Relay Actuator.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="state" defaultValue="active">
+		        <ValueType>String</ValueType>
+		        <TriggerLabel>Activated</TriggerLabel>
+		        <TriggerLabelPrefix>Activated</TriggerLabelPrefix>
+		        <ControlPageLabel>Activated</ControlPageLabel>
+		        <ControlPageLabelPrefix>Activated</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+    	<UiDisplayStateId>state</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="LOCK">
+		<Name>Lock</Name>
+		<Description>The Door Lock Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="onOffState" defaultValue="False">
+		        <ValueType>Boolean</ValueType>
+		        <TriggerLabel>On/Off State</TriggerLabel>
+		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
+		        <ControlPageLabel>On/Off State</ControlPageLabel>
+		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>onOffState</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="IR">
+		<Name>Infrared</Name>
+		<Description>The IR Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="WATER">
+		<Name>Water</Name>
+		<Description>The Water Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+</Devices>

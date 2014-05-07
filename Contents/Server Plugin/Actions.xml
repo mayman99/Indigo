@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- Copyright (C)2014-2014 Marcel Trapman. -->
+<Actions>
+	<!--Action id="send" deviceFilter="indigo.device,self.ARDUINO_RELAY">
+		<Name>Send Value</Name>
+		<CallbackMethod>send</CallbackMethod>
+		<ConfigUI>
+			<Field id="valuelabel" type="label">
+				<Label>Preferred value is an integer due to limited memory!</Label>
+			</Field>
+            <Field id="value" type="textfield">
+                <Label>Value:</Label>
+            </Field>
+		</ConfigUI>
+	</Action-->
+</Actions>

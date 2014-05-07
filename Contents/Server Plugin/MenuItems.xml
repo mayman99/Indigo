@@ -1,0 +1,14 @@
+<MenuItems>
+	<MenuItem id="debugginMenu">
+		<Name>Toggle Debugging</Name>
+        <CallbackMethod>toggleDebugging</CallbackMethod>
+	</MenuItem>
+	<MenuItem id="inclusionMenu">
+		<Name>Start Inclusion Mode</Name>
+        <CallbackMethod>startInclusionMode</CallbackMethod>
+	</MenuItem>
+    <MenuItem id="reloadMenu">
+		<Name>Reload devices</Name>
+        <CallbackMethod>reloadDevices</CallbackMethod>
+	</MenuItem>
+</MenuItems>
