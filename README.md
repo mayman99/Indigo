@@ -4,7 +4,11 @@ indigo-mysensors
 The Indigo MySensors plugin adds interaction with MySensors (see http://www.mysensors.org) to Indigo (see http://www.perceptiveautomation.com).
 
 
-This readme is a work in progress...
+This plugin is a work in progress and so is the readme...
+
+You can 'play' with the plugin but so far only the ardiuno node, arduino relay, light, temperature and (hopefully) the motion sensor have been implemented.
+
+Don't use the plugin on a live system yet!
 
 Menu Items
 ================
