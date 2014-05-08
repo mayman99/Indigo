@@ -1,33 +1,32 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
+
 ####################
 # MySensors plugin interface for Indigo 6
 #
 # Copyright (c)2014-2014 Marcel Trapman.
-#
+####################
 import httplib, urllib, sys, os, threading, glob, time
 
-from BeCore import core
+kOnlineState = "online"
+kOfflineState = "offline"
 
-kOnlineState    = "online"
-kOfflineState   = "offline"
+kBaudrate = 115200
 
-kBaudrate       = 115200
+kInterval = 5
+kWorkerSleep = 1
 
-kInterval       = 5
-kWorkerSleep    = 1
+kMaxNodeId = 255
+kMaxChildId = 255
 
-kMaxNodeId     = 255
-kMaxChildId    = 255
-
-kGatewayId      = 0
-kBoardNodeId    = 255
-kBoardChildId   = 255
+kGatewayId = 0
+kBoardNodeId = 255
+kBoardChildId = 255
 
 #MESSAGE message types (M_)
 kMessageTypes = {
-    "PRESENTATION"	        : 0,
-    "SET_VARIABLE"	        : 1,
+    "PRESENTATION": 0,
+    "SET_VARIABLE"	: 1,
     "REQ_VARIABLE"	        : 2,
     "ACK_VARIABLE"	        : 3,
     "INTERNAL"		        : 4
@@ -77,13 +76,13 @@ kVariableTypes = {
     "DISTANCE"		        : [13, "distance",      "update to"],
     "IMPEDANCE"		        : [14, "scale",         "update to"],
     "ARMED"			        : [15, "security",      "update to"],
-    "TRIPPED"		        : [16, "onOffState",    "update to"],
+    "TRIPPED"		        : [16, "onoroff",       "update to"],
     "WATT"			        : [17, "energy",        "update to"],
     "KWH"			        : [18, "energy",        "update to"],
     "SCENE_ON"		        : [19, "scene",         "update to"],
     "SCENE_OFF"		        : [20, "scene",         "update to"],
     "HEATER"		        : [21, "user",          "update to"],
-    "HEATER_SW"		        : [22, "onOffState",    "update to"],
+    "HEATER_SW"		        : [22, "onoroff",       "update to"],
     "LIGHT_LEVEL"	        : [23, "light",         "update to"],
     "VAR_1"			        : [24, "var",           "update to"],
     "VAR_2"			        : [25, "var",           "update to"],
@@ -162,7 +161,8 @@ class Plugin(indigo.PluginBase):
             self.sleep(kWorkerSleep)
 
         if not result:
-            indigo.server.log(u"Permanently failed connecting at address: %s (baudrate: %s)" % (self.address, kBaudrate))
+            indigo.server.log \
+                (u"Permanently failed connecting at address: %s (baudrate: %s)" % (self.address, kBaudrate))
 
         self.loadDevices()
 
@@ -341,7 +341,7 @@ class Plugin(indigo.PluginBase):
             elif pluginAction.deviceAction == indigo.kDimmerRelayAction.Toggle:
                 onOffState = not indigoDevice.onState
 
-            indigoDevice.updateStateOnServer("onOffState", onOffState)
+            self.updateState(indigoDevice, "LIGHT", onOffState)
 
             if onOffState:
                 value = 1
@@ -405,7 +405,7 @@ class Plugin(indigo.PluginBase):
             if request:
                 request = request.strip("\n\r")
 
-                self.debugLog(u"Receiving command %s" % request)
+                self.debugLog("receiving raw command %s" % request)
 
                 if len(request) == 0:
                     payload = "empty request"
@@ -436,7 +436,7 @@ class Plugin(indigo.PluginBase):
                 elif messageType == self.getMessageNumber("INTERNAL"):
                     self.processInternalCommand(nodeId, childId, itemType, payload)
                 else:
-                    indigo.server.log(u"process incoming failed: (%s)" % payload, isError = True)
+                    indigo.server.log(u"raw command failed: (%s)" % payload, isError = True)
 
     def processPresentationCommand(self, nodeId, childId, itemType, payload):
         indigo.server.log(u"PRESENTATION %s (%s:%s) %s" % (self.getSensorName(itemType), nodeId, childId, payload))
@@ -462,7 +462,6 @@ class Plugin(indigo.PluginBase):
     def processSetVariableCommand(self, nodeId, childId, itemType, payload):
         try:
             device = self.checkDevice(nodeId = nodeId, childId = childId)
-
             if device and device["id"]:
                 indigoDevice = indigo.devices[device["id"]]
 
@@ -470,12 +469,14 @@ class Plugin(indigo.PluginBase):
                     value = self.updateState(indigoDevice, itemType, payload)
 
                     if value:
-                        indigo.server.log(u"received \"%s\" %s %s" % (indigoDevice.name, value))
+                        indigo.server.log(u"received \"%s\" %s" % (indigoDevice.name, value))
         except:
+            self.errorLog(u"processSetVariableCommand failed: %s" % sys.exc_info()[0])
             pass
 
     def processRequestVariableCommand(self, nodeId, childId, itemType, payload):
-        indigo.server.log(u"received req variable %s (%s:%s) %s" % (self.getVariableText(itemType), nodeId, childId, payload))
+        indigo.server.log \
+            (u"received req variable %s (%s:%s) %s" % (self.getVariableText(itemType), nodeId, childId, payload))
 
         device = self.checkDevice(nodeId = nodeId, childId = childId)
 
@@ -497,7 +498,8 @@ class Plugin(indigo.PluginBase):
                 self.sendAcknowledgeVariableCommand(nodeId, childId, itemType, value)
 
     def processAcknowledgeVariableCommand(self, nodeId, childId, itemType, payload):
-        indigo.server.log(u"received acq variable %s (%s:%s) %s" % (self.getVariableText(itemType), nodeId, childId, payload))
+        indigo.server.log \
+            (u"received acq variable %s (%s:%s) %s" % (self.getVariableText(itemType), nodeId, childId, payload))
 
         device = self.checkDevice(nodeId = nodeId, childId = childId)
 
@@ -674,7 +676,8 @@ class Plugin(indigo.PluginBase):
             if not device["version"]:
                 self.sendInternalCommand(nodeId, childId, "VERSION", "Get Version")
 
-            if device["type"] != self.getSensorNumber("ARDUINO_NODE") and device["type"] != self.getSensorNumber("ARDUINO_RELAY"):
+            if device["type"] != self.getSensorNumber("ARDUINO_NODE") and device["type"] != self.getSensorNumber \
+                            ("ARDUINO_RELAY"):
                 if not device["model"]:
                     self.sendInternalCommand(nodeId, childId, "SKETCH_NAME", "Get Sketch Name")
 
@@ -754,19 +757,16 @@ class Plugin(indigo.PluginBase):
             else:
                 uiValue = u"%.1f °F" % value
         elif field == "onOffState":
-            if isinstance(payload, bool):
-                if payload == True:
-                    value = 1
-                    #uiValue = u"on"
-                else:
-                    value = 0
-                    #uiValue = u"off"
+            value = self.booleanValue(payload)
+        elif field == "onoroff":
+            value = self.booleanValue(payload)
+
+            if value:
+                uiValue = u"on"
             else:
-                value = payload
+                uiValue = u"off"
         else:
             value = str(payload)
-
-        self.debugLog(u"updateState device:%s itemType:%s field:%s value:%s" % (indigoDevice.id, itemType, field, value))
 
         if indigoDevice:
             if value != indigoDevice.states[field]:
@@ -1102,6 +1102,35 @@ class Plugin(indigo.PluginBase):
             self.nodeIds[id] = True
 
         self.updateNodeIds(0, False)
+
+    def booleanValue(self, value):
+        try:
+            if isinstance(value, int) or isinstance(value, float):
+                return value > 0
+            elif isinstance(value, str):
+                return value.lower() in [ "yes", "true", "t", "1" ]
+            elif type(value) is bool:
+                return value
+        except:
+            pass
+
+        return None
+
+    def numberValue(self, value):
+        try:
+            if isinstance(value, int):
+                return int(value)
+            elif isinstance(value, float):
+                return float(value)
+            elif type(value) is bool:
+                if value:
+                    return 1
+                else:
+                    return 0
+        except:
+            pass
+
+        return None
 
     ########################################
     # Start connecting

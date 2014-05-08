@@ -37,7 +37,7 @@
 		    </Field>
 		</ConfigUI>
         <States>
-			<State id="onOffState" defaultValue="False">
+			<State id="onoroff" defaultValue="False">
 		        <ValueType>Boolean</ValueType>
 		        <TriggerLabel>On/Off State</TriggerLabel>
 		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
@@ -45,7 +45,7 @@
 		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>onOffState</UiDisplayStateId>
+	    <UiDisplayStateId>onoroff</UiDisplayStateId>
 	</Device>
 	<Device type="custom" id="MOTION">
 		<Name>Motion</Name>
@@ -64,7 +64,7 @@
 		    </Field>
 		</ConfigUI>
         <States>
-			<State id="onOffState" defaultValue="False">
+			<State id="onoroff" defaultValue="False">
 		        <ValueType>Boolean</ValueType>
 		        <TriggerLabel>On/Off State</TriggerLabel>
 		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
@@ -72,7 +72,7 @@
 		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>onOffState</UiDisplayStateId>
+	    <UiDisplayStateId>onoroff</UiDisplayStateId>
 	</Device>
 	<Device type="custom" id="SMOKE">
 		<Name>Smoke</Name>
@@ -91,7 +91,7 @@
 		    </Field>
 		</ConfigUI>
         <States>
-			<State id="onOffState" defaultValue="False">
+			<State id="onoroff" defaultValue="False">
 		        <ValueType>Boolean</ValueType>
 		        <TriggerLabel>On/Off State</TriggerLabel>
 		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
@@ -99,7 +99,7 @@
 		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>onOffState</UiDisplayStateId>
+	    <UiDisplayStateId>onoroff</UiDisplayStateId>
 	</Device>
 	<Device type="relay" id="LIGHT">
 		<Name>Relay</Name>
@@ -152,7 +152,7 @@
 		    </Field>
 		</ConfigUI>
         <States>
-			<State id="onOffState" defaultValue="False">
+			<State id="onoroff" defaultValue="False">
 		        <ValueType>Boolean</ValueType>
 		        <TriggerLabel>On/Off State</TriggerLabel>
 		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
@@ -160,7 +160,7 @@
 		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>onOffState</UiDisplayStateId>
+	    <UiDisplayStateId>onoroff</UiDisplayStateId>
 	</Device>
 	<Device type="custom" id="TEMP">
 		<Name>Temperature</Name>
@@ -530,7 +530,7 @@
 		    </Field>
 		</ConfigUI>
         <States>
-			<State id="onOffState" defaultValue="False">
+			<State id="onoroff" defaultValue="False">
 		        <ValueType>Boolean</ValueType>
 		        <TriggerLabel>On/Off State</TriggerLabel>
 		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
@@ -538,7 +538,7 @@
 		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>onOffState</UiDisplayStateId>
+	    <UiDisplayStateId>onoroff</UiDisplayStateId>
 	</Device>
 	<Device type="custom" id="IR">
 		<Name>Infrared</Name>
