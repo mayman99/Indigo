@@ -1,6 +1,5 @@
 indigo-mysensors
 ================
-
 The Indigo MySensors plugin adds interaction with MySensors (see http://www.mysensors.org) to Indigo (see http://www.perceptiveautomation.com).
 
 
@@ -10,8 +9,25 @@ You can 'play' with the plugin but so far only the ardiuno node, arduino relay, 
 
 Don't use the plugin on a live system yet!
 
-Menu Items
+Using the plugin
 ================
+These files is not yet ready to use.
+When you really want to you should create a folder on your mac and name it 'MySensors.indigoPlugin'.
+When you have Indigo installed the folder will show as a single file that you can doubleclick to activate it in Indigo.
+
+Next thing is simple: Add your MySensors Gateway to your Mac, go to the configuration menu of the plugin and select the correct port. Now you are ready to add your devices.
+
+Restart (push button or plug in a power source) while the devices you want to use is within reach of the MySensors network. This will make Indigo aware of the device and will try to add a node id to the device.
+It is ok when the device already has a node id but this will make that you are in charge of handing out the id's instead of the plugin.
+Please watch your event log to see what is going on.
+
+When the device is known (has an id) you can start adding it to Indigo.
+
+It does not matter if the device has one or more sensors.
+They will all be recognized and added (when the plugin is ready).
+
+Menu Items
+==========
 Plugins > MySensors >
 
 Toggle Debugging
